@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-9 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE AUTOS</span>
+                    <!--  boton que redirige  a la ruta crear auto-->
+                    <button class="btn btn-success float-end" routerLink="/crear-auto" >NUEVO</button>
+                    <table *ngIf="listAutos.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Placa</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Kilometraje</th>
+                            <th scope="col">N_acientos</th>
+                            <th scope="col">Fotografia</th>
+                            <th scope="col">Acciones</th>
+                            
+                          </tr>
+                        </thead>
+                        <!-- Se llama a la coleccion y los compos de la base datos.-->
+                        <tbody>
+                          <tr *ngFor="let auto of listAutos" >
+                            <td>{{auto.placa}}</td>
+                            <td>{{auto.marca}}</td>
+                            <td>{{auto.modelo}}</td>
+                            <td>{{auto.color}}</td>
+                            <td>{{auto.kilometraje}} </td>
+                            <td>{{auto.nacientos}}</td>
+                            <td><img [src]="auto.foto" alt="" width="150px" height="180px" > </td>
+                            <td>
+                              <!-- iconos redireccionados a la funcion de editar y eliminar.-->
+                                <i [routerLink]="['/editar-auto', auto._id]" class="fas fa-edit"  ></i>
+                                <i class="fas fa-trash" (click)="eliminarAuto(auto._id)" ></i>
+                                
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- se genera el control cuando no hay ningun dato la tabla.-->
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listAutos.length == 0">No hay autos para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

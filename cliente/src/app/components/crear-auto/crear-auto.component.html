@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                     <!-- El titulo cambio dependiendo de la funcion sea crear auto o editar -->
+                    <span class="titulo">{{titulo}}</span>
+
+                    <form class="mt-3" [formGroup]="autoForm" (ngSubmit)="agregarAuto()" enctype="multipart/form-data" >
+                        <div class="mb-3">
+                            <input type="text" formControlName="placa" class="form-control form-control-lg"
+                                placeholder="Placa">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('placa')?.hasError('required') && autoForm.get('placa')?.touched">
+                                <span>La placa del auto <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="marca" class="form-control form-control-lg"
+                                placeholder="Marca">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('marca')?.hasError('required') && autoForm.get('marca')?.touched">
+                                <span>La marca <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="modelo" class="form-control form-control-lg"
+                                placeholder="Modelo">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('modelo')?.hasError('required') && autoForm.get('modelo')?.touched">
+                                <span>El modelo <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="color" class="form-control form-control-lg"
+                                placeholder="Color">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('color')?.hasError('required') && autoForm.get('color')?.touched">
+                                <span>El color <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="number" formControlName="kilometraje" class="form-control form-control-lg"
+                                placeholder="Kilometraje">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('kilometraje')?.hasError('required') && autoForm.get('kilometraje')?.touched">
+                                <span>El kilometraje <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="nacientos" class="form-control form-control-lg"
+                                placeholder="N_acientos">
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('nacientos')?.hasError('required') && autoForm.get('nacientos')?.touched">
+                                <span>El N_acientos <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+
+
+                            <input type="file"  accept=".png, .jpg, .jpeg"  class="form-control form-control-lg"
+                                placeholder="Fotografia">
+
+                                <input type="text"   formControlName="foto" class="form-control form-control-lg"
+                                placeholder="Escribe el nombre de la foto con su extencion jpg,png etc "  >
+
+                                
+                            <div class="text-danger"
+                                *ngIf="autoForm.get('foto')?.hasError('required') && autoForm.get('foto')?.touched">
+                                <span>Foto <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="autoForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
